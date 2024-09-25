@@ -5,12 +5,12 @@
 /* CodeStitch Root and Helpers */
 @media only screen and (min-width: 0rem) {
   :root {
-    --primary: #ffba19;
-    --primaryLight: #ffd675;
-    --secondary: #001f3f;
-    --secondaryLight: #001f3f;
-    --headerColor: #1a1a1a;
-    --bodyTextColor: #4e4b66;
+    --primary: #FFD700;
+    --primaryLight: #FFFF8F;
+    --secondary: #000;
+    --secondaryLight: #000;
+    --headerColor: #000;
+    --bodyTextColor: #1a1a1a;
     --bodyTextColorWhite: #fafbfc;
     /* 13px - 16px */
     --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
@@ -90,6 +90,152 @@
     display: none;
   }
 }
+/* Fleet Section */
+.fleet-section {
+  padding-right: 4rem;
+  padding-left: 4rem;
+  background-color: #fff;
+  font-family: "Droid Sans", sans-serif;
+  text-align: center;
+}
+
+.fleet-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem; /* Add padding under 'Our Fleet' */
+}
+
+.fleet-filters {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  border: none;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px; /* Less rounded, more squared */
+  text-transform: uppercase;
+  font-weight: bolder;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.fleet-carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.fleet-carousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.fleet-card {
+  background-color: #fff;
+  width: 450px; /* Reduced size by 10% */
+  height: 360px; /* Reduced size by 10% */
+  flex: none;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.fleet-card-text {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: #000;
+}
+
+.fleet-card-text p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: lighter;
+}
+
+.fleet-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fleet-book {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem; /* Right-align inside the card */
+}
+
+.book-now-text {
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  text-decoration: underline; /* Underline the text */
+}
+
+.book-btn {
+  padding: 0.75rem;
+  background-color: var(--primary);
+  border: none;
+  color: #000;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-btn:hover {
+  background-color: #000;
+  color: var(--primary);
+}
+
+.nav-btn {
+  position: absolute;
+  bottom: -40px;
+  left: 10px;
+  background-color: transparent;
+  border: 2px solid #000; /* Circle outline */
+  color: #000;
+  border-radius: 4px; /* More squared navigation buttons */
+  padding: 0.75rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.nav-btn.right {
+  right: 10px;
+}
+
+.nav-btn.active,
+.nav-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
 /* Desktop - 1024px */
 @media only screen and (min-width: 64rem) {
   .cs-hide-on-mobile {
@@ -724,8 +870,8 @@
 @media only screen and (min-width: 64rem) {
   #cs-navigation {
     z-index: 10000;
-    position: fixed;
-    background-color: #fff;
+    position: relative;
+    background-color: transparent;
     width: 100%;
     /* prevents padding from affecting height and width */
     box-sizing: border-box;
@@ -827,6 +973,222 @@
   }
 }
 /*-- -------------------------- -->
+<---          Steps             -->
+<--- -------------------------- -*/
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #steps-1893 {
+    padding: var(--sectionPadding);
+    background-color: #fff;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  #steps-1893 .cs-container {
+    width: 100%;
+    /* changes to 1280px at desktop */
+    max-width: 44rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  #steps-1893 .cs-image-group {
+    font-size: min(2.24vw, 0.9rem);
+    width: 30.125em;
+    height: 38.5em;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  #steps-1893 .cs-picture {
+    width: 25.8125em;
+    height: 37.0625em;
+    margin-top: 1.5em;
+    box-sizing: border-box;
+    background-color: #DAB692;
+    overflow: hidden;
+    border: 8px solid var(--primary);
+    border-radius: 16.25rem;
+    position: absolute;
+    right: 0;
+    z-index: -1;
+  }
+  #steps-1893 .cs-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.7s;
+  }
+  #steps-1893 .cs-graphic {
+    height: auto;
+    position: absolute;
+  }
+  #steps-1893 .cs-brown {
+    width: 10.3125em;
+    height: auto;
+    top: 1.25em;
+    left: 1.5em;
+    z-index: -2;
+    transform: rotate(140deg);
+  }
+  #steps-1893 .cs-peach {
+    width: 4.3125em;
+    height: auto;
+    top: 1em;
+    left: 8.75em;
+    transform: rotate(-40deg);
+  }
+  #steps-1893 .cs-leaf {
+    width: 14em;
+    height: auto;
+    bottom: 0em;
+    right: 1em;
+    z-index: 1;
+  }
+  #steps-1893 .cs-dots {
+    width: 16.3125em;
+    height: auto;
+    left: 1em;
+    bottom: 1em;
+    z-index: -2;
+  }
+  #steps-1893 .cs-lines {
+    width: 15.375em;
+    right: 0;
+    bottom: 0em;
+  }
+  #steps-1893 .cs-wrapper {
+    display: flex;
+    flex-direction: column;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #steps-1893 .cs-content {
+    /* set text align to left if content needs to be left aligned */
+    text-align: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: flex-start;
+  }
+  #steps-1893 .cs-topper {
+    color: var(--secondary);
+  }
+  #steps-1893 .cs-title {
+    margin: 0;
+  }
+  #steps-1893 .cs-card-group {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    align-items: stretch;
+    grid-auto-flow: row;
+    /* 24px - 32px */
+    gap: clamp(1.5rem, 3vw, 2rem);
+  }
+  #steps-1893 .cs-item {
+    list-style: none;
+    padding-bottom: 2rem;
+    border-bottom: #DED1BD 1px solid;
+    display: flex;
+    align-items: flex-start;
+    /* 16px - 24px */
+    gap: clamp(1rem, 2vw, 1.5rem);
+    position: relative;
+  }
+  #steps-1893 .cs-item:last-of-type {
+    border-bottom: none;
+  }
+  #steps-1893 .cs-number {
+    /* 49px - 72px */
+    font-size: clamp(3.0625rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1875em;
+    color: var(--primary);
+    opacity: 0.2;
+    display: block;
+  }
+  #steps-1893 .cs-h3 {
+    /* 20px - 25px */
+    font-size: clamp(1.25rem, 2.5vw, 1.5625rem);
+    font-weight: 700;
+    line-height: 1.125em;
+    margin: 0 0 0.75rem 0;
+    color: var(--headerColor);
+  }
+  #steps-1893 .cs-item-text {
+    font-size: 1rem;
+    line-height: 1.5em;
+    text-align: left;
+    margin: 0;
+    color: var(--bodyTextColor);
+  }
+}
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+  #steps-1893 .cs-container {
+    max-width: 80rem;
+    flex-direction: row;
+    align-items: stretch;
+    /* 48px - 60px */
+    gap: clamp(3rem, 6vw, 3.75rem);
+  }
+  #steps-1893 .cs-card-group {
+    /* 16px - 32px */
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+  #steps-1893 .cs-item {
+    flex-direction: row;
+  }
+  #steps-1893 .cs-image-group {
+    font-size: min(1.5vw, 1rem);
+    height: auto;
+    min-height: 38.5em;
+    flex: none;
+    /* sends it to the right in the 2nd position */
+    order: 2;
+  }
+  #steps-1893 .cs-picture {
+    height: 96.266234%;
+  }
+}
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+  body.dark-mode #steps-1893 {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  body.dark-mode #steps-1893 .cs-picture {
+    border-color: var(--accent);
+  }
+  body.dark-mode #steps-1893 .cs-graphic {
+    opacity: 0.6;
+  }
+  body.dark-mode #steps-1893 .cs-peach {
+    opacity: 1;
+    filter: brightness(60%);
+  }
+  body.dark-mode #steps-1893 .cs-number {
+    color: var(--primaryLight);
+    opacity: 0.6;
+  }
+  body.dark-mode #steps-1893 .cs-title, body.dark-mode #steps-1893 .cs-h3, body.dark-mode #steps-1893 .cs-item-text {
+    color: var(--bodyTextColorWhite);
+  }
+  body.dark-mode #steps-1893 .cs-item {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  body.dark-mode #steps-1893 .cs-item-text {
+    opacity: 0.8;
+  }
+}
+/*-- -------------------------- -->
 <---   Interior Page Header     -->
 <--- -------------------------- -*/
 /* Mobile */
@@ -883,7 +1245,6 @@
     top: 0;
     left: 0;
     content: "";
-    opacity: 0.7;
     display: block;
     background: #000;
     height: 100%;
@@ -1014,10 +1375,6 @@
     opacity: 1;
     transform: translateX(-50%);
     display: block;
-    background: url("/assets/svgs/cta-squares.svg");
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
     height: 69.25rem;
     width: 125rem;
   }
