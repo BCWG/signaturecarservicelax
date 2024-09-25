@@ -40,8 +40,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* Black Color Overlay */
-    /* prevents the cursor from interacting with it */
     pointer-events: none;
   }
   #hero .cs-container {
@@ -58,7 +56,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    /* Left Line */
   }
   #hero .cs-flex-group {
     display: flex;
@@ -155,7 +152,6 @@
     position: absolute;
     top: 0;
     right: 0;
-    /* Right Line */
   }
   #hero .cs-button-solid {
     margin-right: 1.25rem;
