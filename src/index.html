@@ -79,8 +79,77 @@ eleventyNavigation:
     <!-- ============================================ -->
 
     <section id="hero">
+        <div style="display: flex; justify-content: space-between;">
+            <div>
+                <a href="/" class="cs-logo" aria-label="back to home" tabindex="2">
+                    <img src="/assets/images/logo_white.png" alt="" width="250" aria-hidden="true" decoding="async">
+                </a>
+            </div>
+            <div style="padding-top: 2rem;">
+                <div class="cs-ul-wrapper">
+                    <ul id="cs-expanded" class="cs-ul" style="display: flex; list-style: none; padding: 0;">
+                        {% set navPages = collections.all | eleventyNavigation %}
 
+                        {# Loop through all pages with a eleventyNavigation in the frontmatter #}
+                        {% for entry in navPages %}
 
+                        {# Define a hasChild variable to make it easier to test what navigation items are have child dropdown pages #}
+                        {% set hasChild = entry.children.length %}
+
+                        {# Check the frontmatter for hideOnMobile/hideOnDesktop. Form a list of classes to be joined when the item is rendered #}
+                        {% set hideClasses = [] %}
+                        {% if entry.hideOnMobile %}
+                        {% set hideClasses = (hideClasses.push("cs-hide-on-mobile"), hideClasses) %}
+                        {% endif %}
+                        {% if entry.hideOnDesktop %}
+                        {% set hideClasses = (hideClasses.push("cs-hide-on-desktop"), hideClasses) %}
+                        {% endif %}
+
+                        {# If this page is a dropdown, give it the appropriate classes, icons and accessibility attributes #}
+                        <li class="cs-li {% if hasChild %} cs-dropdown {% endif %} {{ hideClasses | join(" ") }}" style="padding: 0 1rem;">
+
+                        {# If the page has child dropdown pages, render it as a <button> tag with the appropriate dropdown HTML #}
+                        {% if hasChild %}
+
+                        {# Check to see if the user's current page is one of the child pages. If so, apply the cs-active class to the dropdown parent #}
+                        {% set activeClass = "" %}
+                        {% for child in entry.children %}
+                        {% if child.url == page.url %}
+                        {% set activeClass = "cs-active" %}
+                        {% endif %}
+                        {% endfor %}
+
+                        {# Render the <button> with the active class, dropdown icon and child links #}
+                            <button
+                                    class="cs-li-link cs-dropdown-button {{ activeClass }}"
+                                    aria-expanded="false"
+                                    aria-controls="dropdown-{{ entry.key }}"
+                                    aria-label="dropdown-{{ entry.key }}"
+                            >
+                                {{ entry.key }}
+                                <img class="cs-drop-icon" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Icons%2Fdown.svg" alt="dropdown icon" width="15" height="15" decoding="async" aria-hidden="true">
+                            </button>
+
+                            {# Dropdowns have another ul/li set up within the parent li, which gets rendered in the same way as a normal link #}
+                            <ul class="cs-drop-ul" id="dropdown-{{ entry.key }}">
+                                {% for child in entry.children %}
+                                <li class="cs-drop-li">
+                                    <a href="{{ child.url }}" class="cs-li-link cs-drop-link">{{ child.key }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            {# Normal pages are rendered as <a> tags, in the normal way you'd expect #}
+                                <a href="{{ entry.url }}" class="cs-li-link {% if entry.url == page.url %} cs-active {% endif %}" {% if entry.url == page.url %} aria-current="page" {% endif %} style="color: white; text-decoration: none;">
+                                    {{ entry.key }}
+                                </a>
+                                {% endif %}
+                                </li>
+                                {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
 
         <div class="cs-container">
             <div class="cs-flex-group">
@@ -104,104 +173,100 @@ eleventyNavigation:
         </picture>
     </section>
 
-    <!-- ============================================ -->
-    <!--                  Services                    -->
-    <!-- ============================================ -->
-
-    <section id="services" class="services">
-        <div class="card">
-            <picture>
-                <img
-                aria-hidden="true"
-                decoding="async"
-                src="/assets/images/transfer_service_1.jpg"
-                alt="transfer service"
-                width="48"
-                />
-            </picture>
-            <h2>Corporate Travel</h2>
-<!--            <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>-->
+<br />
+<br />
+<br />
+<section id="services-1724">
+    <div class="cs-container">
+        <div class="cs-content">
+            <div class="cs-flex-group">
+                <span class="cs-topper">Business, leisure or a special occasion?</span>
+                <h2 class="cs-title">Our Services</h2>
+            </div>
+<!--            <p class="cs-text">-->
+<!--                Workouts shift your body from periods of aerobic activity to periods of the best training tools for developing a strong anaerobic activity. When your body is in and “aerobic mode,” your body is using oxygen.-->
+<!--            </p>-->
         </div>
-        <div class="card">
-            <picture>
-                <img
-                aria-hidden="true"
-                decoding="async"
-                src="/assets/images/corporate_transfer_1.png"
-                alt="corporate transfer"
-                width="48"
-                />
-            </picture>
-            <h2>Airport Transfers</h2>
-<!--            <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>-->
-        </div>
-        <div class="card">
-            <picture>
-                <img
-                aria-hidden="true"
-                decoding="async"
-                src="/assets/images/event_transfer_1.jpg"
-                alt="event transfer"
-                width="48"
-                />
-            </picture>
-            <h2>Special Events</h2>
-<!--            <p>Talk about the service with keywords people will be searching for it by. Keep it 1-2 sentences.</p>-->
-        </div>
-    </section>
+        <ul class="cs-card-group">
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <span class="cs-number">01</span>
+                    <h3 class="cs-h3">Corporate Travel</h3>
+                </a>
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)"
+                            srcset="https://cdn.prod.website-files.com/65c339849baa8f6e5e4d5aba/65c6dadd23f9a2118f54df94_man-walking-with-bag.jpg">
+                    <source media="(min-width: 601px)"
+                            srcset="https://cdn.prod.website-files.com/65c339849baa8f6e5e4d5aba/65c6dadd23f9a2118f54df94_man-walking-with-bag.jpg">
+                    <img decoding="async"
+                         src="https://cdn.prod.website-files.com/65c339849baa8f6e5e4d5aba/65c6dadd23f9a2118f54df94_man-walking-with-bag.jpg"
+                         alt="finance" width="413" height="374" aria-hidden="true" loading="lazy">
+                </picture>
+            </li>
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <span class="cs-number">02</span>
+                    <h3 class="cs-h3">Airport Transfers</h3>
+                </a>
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)"
+                            srcset="https://www.ruby-services.com/en/images/5-good-reasons-to-use-a-limo-service-for-your-airport-transfers_pd40106w2440h1500rcrop_559.jpg">
+                    <source media="(min-width: 601px)"
+                            srcset="https://www.ruby-services.com/en/images/5-good-reasons-to-use-a-limo-service-for-your-airport-transfers_pd40106w2440h1500rcrop_559.jpg">
+                    <img decoding="async"
+                         src="https://www.ruby-services.com/en/images/5-good-reasons-to-use-a-limo-service-for-your-airport-transfers_pd40106w2440h1500rcrop_559.jpg"
+                         alt="finance" width="413" height="374" aria-hidden="true" loading="lazy">
+                </picture>
+            </li>
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <span class="cs-number">03</span>
+                    <h3 class="cs-h3">Special Events</h3>
+                </a>
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)"
+                            srcset="https://cccarservice.com/wp-content/uploads/2024/04/image_2024_04_24T05_00_03_965Z.png">
+                    <source media="(min-width: 601px)"
+                            srcset="https://cccarservice.com/wp-content/uploads/2024/04/image_2024_04_24T05_00_03_965Z.png">
+                    <img decoding="async"
+                         src="https://cccarservice.com/wp-content/uploads/2024/04/image_2024_04_24T05_00_03_965Z.png"
+                         alt="finance" width="413" height="374" aria-hidden="true" loading="lazy">
+                </picture>
+            </li>
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <span class="cs-number">04</span>
+                    <h3 class="cs-h3">Chauffeur</h3>
+                </a>
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)"
+                            srcset="https://www.shutterstock.com/image-photo/riga-latvia-21-july-2021-600nw-2013279440.jpg">
+                    <source media="(min-width: 601px)"
+                            srcset="https://www.shutterstock.com/image-photo/riga-latvia-21-july-2021-600nw-2013279440.jpg">
+                    <img decoding="async"
+                         src="https://www.shutterstock.com/image-photo/riga-latvia-21-july-2021-600nw-2013279440.jpg"
+                         alt="finance" width="413" height="374" aria-hidden="true" loading="lazy">
+                </picture>
+            </li>
+            <li class="cs-item">
+                <a href="" class="cs-link">
+                    <span class="cs-number">05</span>
+                    <h3 class="cs-h3">Much more...</h3>
+                </a>
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)"
+                            srcset="https://hollywoodlimousine.com/wp-content/uploads/2023/02/executive-interior-1024x683.jpg">
+                    <source media="(min-width: 601px)"
+                            srcset="https://hollywoodlimousine.com/wp-content/uploads/2023/02/executive-interior-1024x683.jpg">
+                    <img decoding="async"
+                         src="https://hollywoodlimousine.com/wp-content/uploads/2023/02/executive-interior-1024x683.jpg"
+                         alt="finance" width="413" height="374" aria-hidden="true" loading="lazy">
+                </picture>
+            </li>
+        </ul>
+    </div>
+</section>
 
-    <!-- ============================================ -->
-    <!--                 Side By Side                 -->
-    <!-- ============================================ -->
-
-<!--    <section id="sbs">-->
-<!--        <div class="cs-container">-->
-<!--            &lt;!&ndash; Left Image Section &ndash;&gt;-->
-<!--            <div class="cs-left">-->
-<!--                <picture class="cs-picture cs-picture1">-->
-<!--                    <source media="(max-width: 600px)" srcset="/assets/images/cabinets2-m.jpg">-->
-<!--                    <source media="(min-width: 601px)" srcset="/assets/images/cabinets2.jpg">-->
-<!--                    <img aria-hidden="true" decoding="async" src="/assets/images/cabinets2.jpg" alt="cabinets" loading="lazy" width="400" height="563">-->
-<!--                </picture>-->
-<!--                <picture class="cs-picture cs-picture2">-->
-<!--                    <source media="(max-width: 600px)" srcset="/assets/images/construction-m.jpg">-->
-<!--                    <source media="(min-width: 601px)" srcset="/assets/images/construction.jpg">-->
-<!--                    <img aria-hidden="true" decoding="async" src="/assets/images/construction.jpg" alt="house" loading="lazy" width="400" height="563">-->
-<!--                </picture>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Right Content Section&ndash;&gt;-->
-<!--            <div class="cs-right">-->
-<!--                <span class="cs-topper">About Us</span>-->
-<!--                <h2 class="cs-title">About Company Title</h2>-->
-<!--                <p class="cs-text">-->
-<!--                    In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.-->
-<!--                </p>-->
-<!--                <p class="cs-text">-->
-<!--                    In consequat tincidunt turpis sit amet imperdiet. Praesent Class officelan nonatoureanor mauris laoreet, iaculis libero quis. Curabitur et tempus eri consequat tincidunt turpis sit amet imperdiet. Praesent nonatourean olei aptent taciti sociosqu ad litora torquent per.-->
-<!--                </p>-->
-<!--                <div class="cs-flex-group">-->
-<!--                    <p class="cs-flex-p">-->
-<!--                        In consequat tincidunt turpis sit amet imperdiet. Praesent Classei consequat tincidunt turpis sit amet imperdiet for mind.-->
-<!--                    </p>-->
-<!--                    <span class="cs-name">Justin Time</span>-->
-<!--                    <span class="cs-job">CEO-Founder</span>-->
-<!--                    <img -->
-<!--                    class="cs-quote-icon"-->
-<!--                    loading="lazy"-->
-<!--                    decoding="async"-->
-<!--                    src="https://csimg.nyc3.digitaloceanspaces.com/SideBySide/quote-white.svg"-->
-<!--                    alt="gavel"-->
-<!--                    width="136"-->
-<!--                    height="77"/>-->
-<!--                </div>-->
-<!--                <a href="/about" class="cs-button-solid">More About Us</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
-
-    <!-- ============================================ -->
-    <!--            Extra Content To Rank             -->
-    <!-- ============================================ -->
 
 <br />
 <br />

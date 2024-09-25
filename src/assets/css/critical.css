@@ -41,12 +41,6 @@
     top: 0;
     left: 0;
     /* Black Color Overlay */
-    content: "";
-    opacity: 0.7;
-    display: block;
-    background: #000;
-    height: 100%;
-    width: 100%;
     /* prevents the cursor from interacting with it */
     pointer-events: none;
   }
@@ -65,13 +59,6 @@
     top: 0;
     left: 0;
     /* Left Line */
-    content: "";
-    /*opacity: 1;*/
-    display: block;
-    /*background: -moz-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); !* FF3.6-15 *!*/
-    /*background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0.5) 0%, rgba(250, 251, 252, 0) 100%); !* Chrome10-25,Safari5.1-6 *!*/
-    height: 100%;
-    width: 1px;
   }
   #hero .cs-flex-group {
     display: flex;
@@ -169,13 +156,6 @@
     top: 0;
     right: 0;
     /* Right Line */
-    content: "";
-    /*opacity: 1;*/
-    display: block;
-    /*background: -moz-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); !* FF3.6-15 *!*/
-    /*background: -webkit-linear-gradient(top, rgba(250, 251, 252, 0) 0%, rgba(250, 251, 252, 0.5) 100%); !* Chrome10-25,Safari5.1-6 *!*/
-    height: 100%;
-    width: 1px;
   }
   #hero .cs-button-solid {
     margin-right: 1.25rem;
@@ -233,13 +213,12 @@
     margin: auto;
     margin-bottom: 1.4375em;
     background: var(--primary);
-    height: 16em;
-    width: 20em;
+    height: 5.5em;
+    width: 5.5em;
   }
   .services .card picture img {
-    height: 16em;
-    width: 20em;
-    border-radius: 25px;
+    height: 3em;
+    width: 3em;
   }
   .services .card h2 {
     margin-bottom: 0.65em;
